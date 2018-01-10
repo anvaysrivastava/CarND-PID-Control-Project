@@ -3,6 +3,27 @@ Self-Driving Car Engineer Nanodegree Program
 
 ---
 
+## Write up.
+
+I used PID controlled for 2 reasons.
+* Handling the angle of vehicle.
+* Handling the throttle of vehicle. ( Target speed set to 20 )
+
+As per Sebastian's lessons and manual tuning, I was able to observe the following impact on vehicle performance for the PID variables.
+
+_P ( Proportional)_
+This parameter directly impacted the responsiveness of vehicle under turn. However if we increase the parameter to be too high then the vehicle will try to over steer and overcompensate the error resulting in higher error over the next side. I had set this parameter to 0.25 after manual trial and error.
+
+_ D (Derivative)_
+This parameter is used to compensate the swaing produced by Proportional parameter. I have observed that higher value lead to tigher merge towards 0 CTE, however extreme high value leads to a jerkier car and extreme low value leads to over powering by Proportional parameter. I have selected final value as 2 after manual trial and error.
+
+_ I (Integral)_
+This parameter is used to adjust the drift. If I set this parameter to 0. While the car will complete the lap nicely while staying within the track, the CTE was almost always >0.1, except the turns. This was indicative that the car has a drift to right. Hence Integral comes into play. This was the most sensitive parameter, since the value is sum of all errors in past the Tau of integral was kept very small just to compensate the drift. The final value I selected was 0.001
+
+
+
+ 
+
 ## Dependencies
 
 * cmake >= 3.5
