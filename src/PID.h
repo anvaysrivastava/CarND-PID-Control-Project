@@ -1,5 +1,7 @@
 #ifndef PID_H
 #define PID_H
+#include <vector>
+
 
 class PID {
 public:
@@ -9,6 +11,16 @@ public:
   double p_error;
   double i_error;
   double d_error;
+  double prev_cte;
+  
+  /**
+   * Error counters
+   **/
+  long counter;
+  double errorSum;
+  double minError;
+  double maxError;
+
 
   /*
   * Coefficients
